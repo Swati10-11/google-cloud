@@ -14,7 +14,6 @@
  * the License.
  */
 
-
 package io.cdap.plugin.joiner.stepsdesign;
 
 import io.cdap.e2e.pages.locators.CdfStudioLocators;
@@ -32,7 +31,7 @@ public class joiner implements CdfHelper {
     SeleniumHelper.getPropertiesLocators(CdfStudioLocators.class);
   }
 
-  @Then("Toggle joiner property join on Null keys set to True")
+  @Then("Toggle joiner property join on Null keys set to False")
   public void toggleJoinerPropertyJoinOnNullKeysSetToTrue() {
     JoinerActions.toggleJoinerPropertyOnNullKeys();
   }
@@ -58,7 +57,7 @@ public class joiner implements CdfHelper {
 
   @When("Enter joiner property join type {string}")
   public void enterJoinerPropertyJoinType(String joinType) {
-  JoinerActions.selectJoinType(joinType);
+    JoinerActions.selectJoinType(joinType);
   }
 
   @Then("Select Joiner property join condition {string}")
@@ -91,23 +90,24 @@ public class joiner implements CdfHelper {
     JoinerActions.enterJoinCondition(PluginPropertyUtils.pluginProp(joinCondition));
   }
 
-  @When("Select joiner property fields with blank property {string}")
-  public void selectJoinerPropertyFieldsWithBlankProperty(String joinerFields) {
-    JoinerActions.selectJoinerField(joinerFields);
-  }
-
   @Then("Expand Bigquery expansion panel {string}")
   public void expandBigqueryExpansionPanel(String bigQuery) {
-    JoinerActions.selectJoinerField(bigQuery);
+    JoinerActions.expandField(bigQuery);
   }
 
   @Then("Select joiner property BigQuery name {string}")
   public void selectJoinerPropertyBigQueryName(String selectNone) {
-    JoinerActions.selectJoinerField(selectNone);
+    JoinerActions.selectJoinerFieldBQ(selectNone);
   }
 
-  /*Then("Select joiner property BigQuery name {string}")
-  public void selectJoinerPropertyBigQueryName(String none) {
-    JoinerActions.selectNone(none);*/
+  @Then("Expand GCS expansion panel {string}")
+  public void expandGCSExpansionPanel(String GCS) {
+    JoinerActions.expandFieldGCS(GCS);
+
   }
 
+  @Then("Select joiner property GCS name {string}")
+  public void selectJoinerPropertyGCSName(String selectNone) {
+    JoinerActions.selectJoinerFieldGCS(selectNone);
+  }
+}

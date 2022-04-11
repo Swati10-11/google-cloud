@@ -14,7 +14,6 @@
  * the License.
  */
 
-
 package io.cdap.plugin.joiner.actions;
 
 import io.cdap.e2e.pages.locators.CdfGCSLocators;
@@ -40,7 +39,7 @@ public class JoinerActions {
   }
 
   public static void toggleJoinerPropertyOnNullKeys() {
-   ElementHelper.clickOnElement(JoinerLocators.clickOnJoinerNullKeys);
+    ElementHelper.clickOnElement(JoinerLocators.clickOnJoinerNullKeys);
   }
 
   public static void enterJoinerPartition(String partitions) {
@@ -51,13 +50,13 @@ public class JoinerActions {
     ElementHelper.clickOnElement(JoinerLocators.joinerCloseButton);
   }
 
-public static void  selectJoinConditionType(String value) {
+  public static void selectJoinConditionType(String value) {
     ElementHelper.selectRadioButton(JoinerLocators.selectJoinConditionType(value));
-}
+  }
 
-public static void selectJoinType(String value) {
-  ElementHelper.selectDropdownOption(JoinerLocators.joinerRequiredInputs, CdfPluginPropertiesLocators.locateDropdownListItem(value));
-}
+  public static void selectJoinType(String value) {
+    ElementHelper.selectDropdownOption(JoinerLocators.joinerRequiredInputs, CdfPluginPropertiesLocators.locateDropdownListItem(value));
+  }
 
   public static void selectJoinConditionBigQuery(String joinCondition) {
     ElementHelper.selectDropdownOption(JoinerLocators.selectJoinCondition, CdfPluginPropertiesLocators.locateDropdownListItem(joinCondition));
@@ -72,10 +71,6 @@ public static void selectJoinType(String value) {
     JoinerLocators.joinerRequiredInputs.isSelected();
   }
 
-  /*public static void clickJoinerAddRowButton(int row) {
-    ElementHelper.clickOnElement(JoinerLocators.joinerInput(row));
-  }*/
-
   public static void enterJoinerKey(String joinerKey) {
     JoinerLocators.joinerInputAliasesInputName.sendKeys(joinerKey);
   }
@@ -88,14 +83,18 @@ public static void selectJoinType(String value) {
     JoinerLocators.joinerJoinCondition.sendKeys(joinCondition);
   }
 
-  public static void selectJoinerField(String value) {
-    ElementHelper.selectDropdownOption(JoinerLocators.joinerFieldBigQuerySelect, CdfPluginPropertiesLocators.locateDropdownListItem(value));
+  public static void expandField(String expandField) {
+    JoinerLocators.joinerFields.click();
   }
 
-  /*ublic static void selectJoinerFieldBQ(String select) {
-    ElementHelper.selectDropdownOption(JoinerLocators.joinerFieldBigQuerySelect, CdfPluginPropertiesLocators.locateDropdownListItem(select));
-  }*/
-
+  public static void selectJoinerFieldBQ(String option) {
+    ElementHelper.selectDropdownOption(JoinerLocators.joinerFieldBQSelect, JoinerLocators.locateSchemaSelectListItem(option));
   }
 
-
+  public static void expandFieldGCS(String expandField) {
+    JoinerLocators.joinerFieldsGCS.click();
+  }
+  public static void selectJoinerFieldGCS(String option) {
+    ElementHelper.selectDropdownOption(JoinerLocators.joinerFieldGCSSelect, JoinerLocators.locateSchemaSelectListItem(option));
+  }
+}

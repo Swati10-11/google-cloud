@@ -14,9 +14,7 @@
  * the License.
  */
 
-
 package io.cdap.plugin.joiner.locators;
-
 
 import io.cdap.e2e.utils.SeleniumDriver;
 import org.apache.hadoop.yarn.webapp.hamlet.Hamlet;
@@ -30,8 +28,6 @@ import org.openqa.selenium.support.How;
  * Joiner Related Locators.
  */
 public class JoinerLocators {
-  @FindBy(how = How.XPATH, using = "//div[@data-cy='selectedFields']")
-  public static WebElement joinerSelectedFields;
 
   @FindBy(how = How.XPATH, using = "//*[@data-cy='switch-joinNullKeys']")
   public static WebElement clickOnJoinerNullKeys;
@@ -71,10 +67,16 @@ public class JoinerLocators {
   @FindBy(how = How.XPATH, using = "//*[@data-cy='BigQuery-stage-expansion-panel']//div[@role='button']")
     public static WebElement joinerFields;
 
-//  @FindBy(how = How.XPATH, using = "//*[@data-cy='schema-select-btn']]")
-//  public static WebElement joinerSelect;
+  @FindBy(how = How.XPATH, using = "//*[@data-cy='GCS-stage-expansion-panel']//div[@role='button']")
+  public static WebElement joinerFieldsGCS;
 
-  @FindBy(how = How.XPATH, using =  "//*[@data-cy='GCS-input-stage']/ancestor::div[@role='button']/following-sibling::div//button[@data-cy='schema-select-btn']")
-  public static WebElement joinerFieldBigQuerySelect;
+  @FindBy(how = How.XPATH, using = "//*[@data-cy='GCS-input-stage']/ancestor::div[@role='button']/following-sibling::div//button[@data-cy='schema-select-btn']")
+  public static WebElement joinerFieldGCSSelect;
 
+  @FindBy(how = How.XPATH, using = "//*[@data-cy='BigQuery-input-stage']/ancestor::div[@role='button']/following-sibling::div//button[@data-cy='schema-select-btn']")
+  public static WebElement joinerFieldBQSelect;
+
+  public static By locateSchemaSelectListItem(String option) {
+    return By.xpath("//li[@data-cy='select-" + option + "-option']");
+  }
 }
